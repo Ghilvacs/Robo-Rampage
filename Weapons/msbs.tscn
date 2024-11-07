@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxkppssqk2adt"]
+
+[ext_resource type="PackedScene" uid="uid://8eadi1e8lf51" path="res://Weapons/hitscan_weapon.tscn" id="1_q2qgq"]
+[ext_resource type="PackedScene" uid="uid://ch0xg1prborqm" path="res://Weapons/msbs_grot_a2.glb" id="2_iqkts"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1sdg"]
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="Curve" id="Curve_fnnsa"]
+_data = [Vector2(0.0454545, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yh7cq"]
+curve = SubResource("Curve_fnnsa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8inun"]
+direction = Vector3(0, 0, -1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_curve = SubResource("CurveTexture_yh7cq")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ubqu"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="MSBS" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_q2qgq")]
+weapon_mesh = NodePath("msbs_grot_a2")
+muzzle_flash = NodePath("MuzzleFlash")
+automatic = true
+
+[node name="msbs_grot_a2" parent="." index="1" instance=ExtResource("2_iqkts")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.13, -0.15, -0.5)
+
+[node name="MSBS_Grot1_M_grot1_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/MSBS_Grot1" index="0"]
+layers = 2
+
+[node name="MSBS_Grot2_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/MSBS_Grot2" index="0"]
+layers = 2
+
+[node name="rail_short_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/rail_short" index="0"]
+layers = 2
+
+[node name="cover_bottom_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/cover_bottom" index="0"]
+layers = 2
+
+[node name="front_grip_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/front_grip" index="0"]
+layers = 2
+
+[node name="cover_front_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/cover_front" index="0"]
+layers = 2
+
+[node name="cover_bottom_001_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/cover_bottom_001" index="0"]
+layers = 2
+
+[node name="rail_long_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/rail_long" index="0"]
+layers = 2
+
+[node name="rail_short_001_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/rail_short_001" index="0"]
+layers = 2
+
+[node name="cover_side_l_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/cover_side_l" index="0"]
+layers = 2
+
+[node name="cover_side_r_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/cover_side_r" index="0"]
+layers = 2
+
+[node name="cover_side_r_001_M_grot2_0" parent="msbs_grot_a2/Sketchfab_model/b54b38330d464ec994f3ac874e9ae9f2_fbx/RootNode/cover_side_r_001" index="0"]
+layers = 2
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, -0.12, -0.95)
+layers = 2
+material_override = SubResource("StandardMaterial3D_t1sdg")
+cast_shadow = 0
+emitting = false
+lifetime = 0.07
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8inun")
+draw_pass_1 = SubResource("BoxMesh_2ubqu")
+
+[editable path="msbs_grot_a2"]

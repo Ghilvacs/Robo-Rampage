@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdmp7ondrhici"]
+
+[ext_resource type="Script" path="res://Interactables/control_panel.gd" id="1_jt6nr"]
+[ext_resource type="PackedScene" uid="uid://cyy4mvtu27vfp" path="res://Assets/Deco/sci-fi_control_panel.glb" id="1_y6v0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a857h"]
+
+[node name="ControlPanel" type="Area3D"]
+script = ExtResource("1_jt6nr")
+
+[node name="sci-fi_control_panel" parent="." instance=ExtResource("1_y6v0r")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_a857h")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+
+[editable path="sci-fi_control_panel"]

@@ -1,0 +1,34 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://hf4pbphgt4o7"]
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_pjtbq"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_m2pdm"]
+constant = 2.0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void fragment() {
+// FloatConstant:3
+	float n_out3p0 = 2.000000;
+
+
+// Fresnel:2
+	float n_out2p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_out3p0);
+
+
+// Output:0
+	ALPHA = n_out2p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeFresnel_pjtbq")
+nodes/fragment/2/position = Vector2(20, 220)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_m2pdm")
+nodes/fragment/3/position = Vector2(-199.237, 331.696)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 1, 3, 0, 2, 3)

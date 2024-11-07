@@ -1,0 +1,3138 @@
+[gd_scene load_steps=78 format=3 uid="uid://cfbeao0y18dtq"]
+
+[ext_resource type="Material" uid="uid://cifhcfymnxfay" path="res://Levels/Materials/GrayMaterial.tres" id="1_aahs1"]
+[ext_resource type="Texture2D" uid="uid://imkkadwmrnym" path="res://Levels/level-floorplan.png" id="2_unjly"]
+[ext_resource type="PackedScene" uid="uid://c4a882kfrptvi" path="res://Player/player.tscn" id="3_orkty"]
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="3_rrejh"]
+[ext_resource type="AudioStream" uid="uid://d45ggu422dqy" path="res://Audio/Robot-Movement-Sound-Effects.ogg" id="4_tru6u"]
+[ext_resource type="PackedScene" uid="uid://swirrr08833m" path="res://Enemy/drone.glb" id="4_yocwf"]
+[ext_resource type="PackedScene" uid="uid://8eey8grmipxv" path="res://Pickups/bullet_pickup.tscn" id="5_btlav"]
+[ext_resource type="AudioStream" uid="uid://bfa33f342eq23" path="res://Audio/Pew-Sound-Effect.ogg" id="6_36jyn"]
+[ext_resource type="PackedScene" uid="uid://b2jarf1pip60p" path="res://Pickups/small_bullet_pickup.tscn" id="6_e6bt2"]
+[ext_resource type="PackedScene" uid="uid://0qep0d0iy6ph" path="res://Hazards/lava.tscn" id="8_n40nv"]
+[ext_resource type="PackedScene" uid="uid://c18ke7bskp0u1" path="res://Assets/Deco/clone_large_box.glb" id="8_xs2do"]
+[ext_resource type="PackedScene" uid="uid://ct8bk5ihacl2s" path="res://Assets/Deco/locker.glb" id="10_5fgxc"]
+[ext_resource type="AudioStream" uid="uid://r275kbgcayf2" path="res://Audio/Electricity-Sound-Effect.ogg" id="11_4owtd"]
+[ext_resource type="PackedScene" uid="uid://dywpuqj2jgw40" path="res://Assets/Deco/cloning_vat_fridge.glb" id="11_ea1ln"]
+[ext_resource type="PackedScene" uid="uid://bkbh3cv7yevas" path="res://Assets/Deco/modular_pipes.glb" id="11_ft6ap"]
+[ext_resource type="PackedScene" uid="uid://dkkgbiwq8ykoy" path="res://Assets/Deco/workbench (1).glb" id="12_khlhv"]
+[ext_resource type="PackedScene" uid="uid://ckxerm6l3l65l" path="res://Assets/Deco/retro_computer.glb" id="15_ubkvt"]
+[ext_resource type="PackedScene" uid="uid://v5xx4yhqg2dp" path="res://Assets/Deco/industrial_sci-fi_gritty_wall_lamp.glb" id="16_be1im"]
+[ext_resource type="PackedScene" uid="uid://c3p36yk4vl8f8" path="res://Assets/Deco/garage_door.glb" id="16_som37"]
+[ext_resource type="PackedScene" uid="uid://d0awxirfp4snx" path="res://Assets/Deco/overhead_lamp.glb" id="17_tna3c"]
+[ext_resource type="PackedScene" uid="uid://cdmp7ondrhici" path="res://Interactables/control_panel.tscn" id="21_bmcag"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ehyj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_naq1f"]
+sky_material = SubResource("ProceduralSkyMaterial_0ehyj")
+
+[sub_resource type="Environment" id="Environment_d73c0"]
+background_mode = 2
+sky = SubResource("Sky_naq1f")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7w7ou"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 1, 1)
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j1xgm"]
+
+[sub_resource type="Animation" id="Animation_atlpr"]
+resource_name = "Aggro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, -2.2, 7.881)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917), Vector3(0, 0, 7.917), Vector3(0.8, 1, 7.917)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(0.8, -1, 7.882)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, 1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, -1, 7.882)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DroneAggroStreamPlayer3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_tru6u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_yiuym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fwdl6"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.3, 0.5), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(0.65, 0.65, 0.65), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ayxef"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.4, 0), Vector3(0, 0.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qk7n7"]
+_data = {
+"Aggro": SubResource("Animation_atlpr"),
+"RESET": SubResource("Animation_yiuym"),
+"attack": SubResource("Animation_fwdl6"),
+"idle": SubResource("Animation_ayxef")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ufm3"]
+albedo_color = Color(1, 0.211765, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjsob"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_sjqk4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4f76g"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 1, 1)
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xk3jq"]
+
+[sub_resource type="Animation" id="Animation_gvfc3"]
+resource_name = "Aggro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, -2.2, 7.881)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917), Vector3(0, 0, 7.917), Vector3(0.8, 1, 7.917)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(0.8, -1, 7.882)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, 1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, -1, 7.882)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DroneAggroStreamPlayer3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_tru6u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_65yvl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w4q5d"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.3, 0.5), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(0.65, 0.65, 0.65), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4m5bf"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.4, 0), Vector3(0, 0.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6oa2"]
+_data = {
+"Aggro": SubResource("Animation_gvfc3"),
+"RESET": SubResource("Animation_65yvl"),
+"attack": SubResource("Animation_w4q5d"),
+"idle": SubResource("Animation_4m5bf")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibmff"]
+albedo_color = Color(1, 0.211765, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc4ga"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_8klna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mj5fl"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1byj"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hyexh"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qulex"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8mckc"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yax2"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u5rq"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtjsr"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1my3a"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttm1l"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1fxd"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4efcy"]
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qge4"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 1, 1)
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fwu1r"]
+
+[sub_resource type="Animation" id="Animation_h1ln7"]
+resource_name = "Aggro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, -2.2, 7.881)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917), Vector3(0, 0, 7.917), Vector3(0.8, 1, 7.917)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(0.8, -1, 7.882)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, 1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, -1, 7.882)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DroneAggroStreamPlayer3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_tru6u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_b3xg1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DroneAttackStreamPlayer3D:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pm8xb"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.3, 0.5), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(0.65, 0.65, 0.65), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DroneAttackStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4wyb6"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.4, 0), Vector3(0, 0.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioa8x"]
+_data = {
+"Aggro": SubResource("Animation_h1ln7"),
+"RESET": SubResource("Animation_b3xg1"),
+"attack": SubResource("Animation_pm8xb"),
+"idle": SubResource("Animation_4wyb6")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dus0"]
+albedo_color = Color(1, 0.211765, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hschs"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bcavn"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wwjhi"]
+vertices = PackedVector3Array(-8.25, 0.5, -16.0769, -6.5, 0.5, -16.0769, -6.75, 0.5, -17.8269, -8.25, 0.5, -16.0769, -6.75, 0.5, -17.8269, -10.75, 0.5, -17.8269, -9, 0.5, -15.3269, -9, 0.5, -4.32693, -9, 0.5, -15.3269, -10.75, 0.5, -11.0769, -10.75, 0.5, -4.07693, -9, 0.5, -15.3269, -10.75, 0.5, -17.8269, -10.75, 0.5, -11.0769, 1, 0.5, -17.8269, -6.75, 0.5, -17.8269, -6.5, 0.5, -16.0769, 1, 0.5, -16.0769, 8.75, 0.5, -16.0769, 9, 0.5, -17.8269, 1, 0.5, -17.8269, 1, 0.5, -16.0769, 8.5, 3.5, -16.0769, 8.75, 3.5, -17.8269, 1.5, 3.5, -17.8269, 0.25, 3.5, -16.0769, -10.75, 3.5, -5.57693, -9, 3.5, -5.32693, -9, 3.5, -15.0769, -10.75, 3.5, -16.8269, 0.25, 3.5, -16.0769, 1.5, 3.5, -17.8269, -5.75, 3.5, -17.8269, -6.5, 3.5, -16.8269, -9, 3.5, -15.0769, -8, 3.5, -16.0769, -10.75, 3.5, -16.8269, -8, 3.5, -16.0769, 0.25, 3.5, -16.0769, -6.5, 3.5, -16.8269, -10.75, 3.5, -16.8269, 8.75, 3.5, -17.8269, 8.5, 3.5, -16.0769, 10.25, 3.5, -16.0769, 11.25, 3.5, -8.57693, 13.25, 3.5, -8.57693, 13.75, 3.5, -9.07693, 13.75, 3.5, -10.8269, 13, 3.5, -11.5769, 13, 3.5, -17.8269, 8.75, 3.5, -17.8269, 10.25, 3.5, -16.0769, 11.25, 3.5, -15.0769, 13.75, 3.5, -9.07693, 20.75, 3.5, -9.07693, 20.75, 3.5, -10.8269, 13.75, 3.5, -10.8269, 13, 3.5, -11.5769, 13, 3.5, -17.8269, 11.25, 3.5, -15.0769, 11.25, 3.5, -8.57693, 10.5, 0.5, -1.82693, 8.75, 0.5, -1.82693, 9, 0.5, -0.0769253, 9, 0.5, -17.8269, 8.75, 0.5, -16.0769, 10.5, 0.5, -16.0769, 10.5, 0.5, -1.82693, 9, 0.5, -0.0769253, 13, 0.5, -0.0769253, 11.25, 0.5, -2.57693, 11.25, 0.5, -2.57693, 13, 0.5, -0.0769253, 13, 0.5, -9.07693, 11.25, 0.5, -9.07693, 13, 0.5, -17.8269, 9, 0.5, -17.8269, 10.5, 0.5, -16.0769, 11.25, 0.5, -15.3269, 13, 0.5, -9.07693, 13, 0.5, -17.8269, 11.25, 0.5, -15.3269, 11.25, 0.5, -9.07693, 30.75, 0.5, -9.07693, 30.75, 0.5, -15.8269, 23.25, 0.5, -15.8269, 23.25, 0.5, -9.07693, 23.25, 0.5, -9.07693, 23.25, 0.5, -2.07693, 30.75, 0.5, -2.07693, 30.75, 0.5, -9.07693, 20.75, 3.5, -10.8269, 20.75, 3.5, -9.07693, 22.5, 3.5, -9.07693, 22.5, 3.5, -10.8269, 26.25, 3.5, -15.8269, 25.5, 3.5, -14.8269, 23.25, 3.5, -11.5769, 23.25, 3.5, -8.32693, 30.75, 3.5, -6.32693, 30.75, 3.5, -15.8269, 23.25, 3.5, -11.5769, 22.5, 3.5, -10.8269, 22.5, 3.5, -9.07693, 23.25, 3.5, -8.32693, 23.25, 3.5, -8.32693, 23.25, 3.5, -6.32693, 30.75, 3.5, -6.32693, 25.5, 3.5, -14.8269, 23.25, 3.5, -14.8269, 23.25, 3.5, -11.5769, -22.5, 0.5, 10.4231, -22.25, 0.5, 9.17307, -23.25, 0.5, 9.17307, -22.5, 0.5, 10.4231, -23.25, 0.5, 9.17307, -24, 0.5, 8.42307, -25.75, 0.5, 10.4231, -25.75, 0.5, -0.326925, -25.25, 0.5, -0.326925, -25.25, 0.5, -1.07693, -26.5, 0.5, -1.07693, -29.25, 0.75, -7.07693, -25.25, 2.75, -7.07693, -25, 2.75, -8.82693, -30.5, 0.5, -8.82693, -29.125, 0.75, -8.82693, -24, 0.5, 0.923075, -25.25, 0.5, -0.326925, -25.75, 0.5, -0.326925, -25.75, 0.5, 10.4231, -24, 0.5, 8.42307, -30, 0.5, -6.32693, -29.25, 0.75, -7.07693, -30.5, 0.5, -8.82693, -30, 0.5, -6.32693, -30.5, 0.5, -8.82693, -30.5, 0.5, -1.07693, -30, 0.5, -2.32693, -25.25, 0.5, -1.07693, -29, 0.5, -1.32693, -26.5, 0.5, -1.07693, -29, 0.5, -1.32693, -30, 0.5, -2.32693, -30.5, 0.5, -1.07693, -29, 0.5, -1.32693, -30.5, 0.5, -1.07693, -26.5, 0.5, -1.07693, -19, 3.5, -5.57693, -19, 3.5, -7.32693, -19.75, 3.5, -7.32693, -25, 2.75, -8.82693, -25.25, 2.75, -7.07693, -23.5, 3.5, -7.07693, -22.5, 3.5, -1.07693, -21.25, 3.5, -1.07693, -20.5, 3.5, -2.32693, -20.5, 3.5, -2.32693, -18.75, 3.5, -2.32693, -18.25, 3.5, -3.07693, -18.25, 3.5, -4.82693, -19, 3.5, -5.57693, -19, 3.5, -5.57693, -19.75, 3.5, -7.32693, -20.5, 3.5, -8.07693, -22.5, 3.5, -6.07693, -22.5, 3.5, -1.07693, -20.5, 3.5, -2.32693, -20.5, 3.5, -8.07693, -20.5, 3.5, -8.82693, -25, 2.75, -8.82693, -23.5, 3.5, -7.07693, -22.5, 3.5, -6.07693, -22.75, 3.5, -8.82693, -18.25, 3.5, -3.07693, -13.25, 3.5, -3.07693, -13.25, 3.5, -4.82693, -18.25, 3.5, -4.82693, -21.25, 0.5, -3.82693, -21.5, 0.5, -1.07693, -19, 0.5, -1.07693, -22.5, 0.5, -8.82693, -22.5, 0.5, -4.82693, -21.25, 0.5, -3.82693, -21.25, 0.5, -3.82693, -19, 0.5, -1.07693, -19, 0.5, -8.82693, -22.5, 0.5, -8.82693, 13.25, 3.5, -8.57693, 11.25, 3.5, -8.57693, 11.25, 3.5, -2.82693, 13, 3.5, -1.32693, 3.25, 3.5, -1.82693, -3.75, 3.5, -1.82693, -3.5, 3.5, -0.0769253, 7, 3.5, -0.0769253, 8, 3.5, -1.32693, 13, 3.5, -1.32693, 11.25, 3.5, -2.82693, 10.25, 3.5, -1.82693, 8, 3.5, -1.32693, 13, 3.5, -1.32693, 10.25, 3.5, -1.82693, 3.25, 3.5, -1.82693, 30.75, 3.5, -6.32693, 23.25, 3.5, -6.32693, 23.25, 3, 0.173075, 30.75, 3, 0.173075, 30.75, 3.5, -1.12692, 23.25, 3.5, -1.12692, 23.25, 3, 0.173075, 23.25, 0.5, 6.92307, 30.75, 0.5, 6.92307, 30.75, 3, 0.173075, 23.25, 0.5, 5.57307, 30.75, 0.5, 5.57307, -5.25, 3.5, -0.0769253, -3.5, 3.5, -0.0769253, -3.75, 3.5, -1.82693, -13.25, 3.5, -4.82693, -13.25, 3.5, -3.07693, -11.5, 3.5, -3.07693, -11.5, 3.5, -4.82693, -6, 3.5, 0.673075, -7.75, 3.5, 0.673075, -7.75, 3.5, 3.42307, -6, 3.5, 6.92307, -9, 3.5, -5.32693, -10.75, 3.5, -5.57693, -11.5, 3.5, -4.82693, -11.5, 3.5, -3.07693, -10.75, 3.5, -2.32693, -9, 3.5, -2.82693, -8, 3.5, -1.82693, -8.5, 3.5, -0.0769253, -7.75, 3.5, 0.673075, -6, 3.5, 0.673075, -5.25, 3.5, -0.0769253, -3.75, 3.5, -1.82693, -10.75, 3.5, -2.32693, -10.75, 3.5, -0.0769253, -8.5, 3.5, -0.0769253, -8, 3.5, -1.82693, -9, 3.5, -2.82693, -8.5, 3.5, 4.17307, -12, 3.5, 4.42307, -11.75, 3.5, 6.92307, -6, 3.5, 6.92307, -6, 3.5, 6.92307, -7.75, 3.5, 3.42307, -8.5, 3.5, 4.17307, -27.75, -0.5, -4.82693, -27.75, -0.5, -3.57693, -25.5, -0.5, -3.57693, -25.5, -0.5, -4.82693, -9, 0.5, -2.57693, -9, 0.5, -4.32693, -10.75, 0.5, -4.07693, -9, 0.5, -2.57693, -10.75, 0.5, -4.07693, -10.75, 0.5, -0.0769253, -8.25, 0.5, -1.82693, 9, 0.5, -0.0769253, 8.75, 0.5, -1.82693, 0.25, 0.5, -1.82693, -1, 0.5, -0.0769253, -8.25, 0.5, -1.82693, -10.75, 0.5, -0.0769253, -1, 0.5, -0.0769253, 0.25, 0.5, -1.82693, 23.25, 0.5, 0.173075, 23.25, 0.5, 0.673075, 30.75, 0.5, 0.673075, 30.75, 0.5, 0.173075, -29.75, 0.5, 10.9231, -29.75, 0.5, 17.6731, -28, 0.5, 17.6731, -28, 0.5, 10.9231, -28, 0.5, 10.9231, -28, 0.5, 4.17307, -29.75, 0.5, 4.17307, -29.75, 0.5, 10.9231, -29.75, 3.5, 17.6731, -28, 3.5, 17.6731, -28, 3.5, 15.4231, -23.25, 1.5, 14.4231, -23.25, 1.5, 12.6731, -27, 3.5, 12.6731, -27, 3.5, 14.4231, -19.5, 3.5, 6.92307, -11.75, 3.5, 6.92307, -12, 3.5, 4.42307, -19.5, 3.5, 4.17307, -28, 3.5, 15.4231, -27, 3.5, 14.4231, -27, 3.5, 12.6731, -28, 3.5, 15.4231, -27, 3.5, 12.6731, -28, 3.5, 11.6731, -29.75, 3.5, 11.4231, -29.75, 3.5, 17.6731, -28.5, 3.5, 5.42307, -28, 3.5, 7.92307, -27, 3.5, 6.92307, -27, 3.5, 6.92307, -19.5, 3.5, 6.92307, -19.5, 3.5, 4.17307, -27.75, 3.5, 4.17307, -28.5, 3.5, 5.42307, -29.75, 3.5, 5.42307, -29.75, 3.5, 11.4231, -28, 3.5, 11.6731, -28, 3.5, 7.92307, -28.5, 3.5, 5.42307, -21.75, 0.5, 4.17307, -21.75, 0.5, 6.92307, -10, 0.5, 6.92307, -10, 0.5, 4.17307, 7.5, 0.5, 9.42307, 7.5, 0.5, 8.17307, 6.25, 0.5, 8.17307, 5.5, 0.5, 9.17307, -0.75, 0.5, 14.6731, -0.75, 0.5, 16.4231, 0, 0.5, 16.4231, 9, 0.5, 17.6731, 9, 0.5, 10.1731, 8.25, 0.5, 10.1731, -2, 0.5, 12.1731, -2, 0.5, 13.9231, -0.75, 0.5, 14.6731, -0.75, 0.5, 11.4231, 8.25, 0.5, 10.1731, 7.5, 0.5, 9.42307, 5.5, 0.5, 9.17307, 2.5, 0.5, 9.17307, 2.5, 0.5, 9.17307, -0.75, 0.5, 11.4231, -0.75, 0.5, 14.6731, 0.75, 0.5, 17.6731, 9, 0.5, 17.6731, 8.25, 0.5, 10.1731, 2.5, 0.5, 9.17307, 2, 0.5, 8.42307, -0.75, 0.5, 8.42307, -0.75, 0.5, 11.4231, -0.75, 0.5, 14.6731, 0, 0.5, 16.4231, 0.75, 0.5, 17.6731, -22.25, 0.5, 9.17307, -22.5, 0.5, 10.4231, -21.5, 0.5, 10.4231, -10, 0.5, 11.4231, -10, 0.5, 10.4231, -11.5, 0.5, 10.4231, -21.5, 0.75, 12.6731, -23.25, 1.5, 12.6731, -23.25, 1.5, 14.4231, -21.5, 0.75, 14.4231, -9.25, 0.5, 13.9231, -4.25, 0.5, 13.9231, -4.25, 0.5, 12.1731, -9.25, 0.5, 12.1731, -22.25, 0.5, 9.17307, -21.5, 0.5, 10.4231, -20.75, 0.5, 11.1731, -12.25, 0.5, 9.17307, -20.75, 0.5, 11.9231, -21.5, 0.75, 12.6731, -21.5, 0.75, 14.4231, -20.75, 0.5, 15.1731, -18, 0.5, 17.6731, -9.25, 0.5, 12.1731, -10, 0.5, 11.4231, -11.5, 0.5, 10.4231, -10, 0.5, 14.6731, -9.25, 0.5, 13.9231, -10, 0.5, 14.6731, -11.5, 0.5, 10.4231, -12.25, 0.5, 9.17307, -21.5, 0.5, 16.6731, -25.75, 0.5, 16.6731, -25.75, 0.5, 17.6731, -18, 0.5, 17.6731, -20.75, 0.5, 11.1731, -20.75, 0.5, 11.9231, -18, 0.5, 17.6731, -10, 0.5, 17.6731, -10, 0.5, 14.6731, -12.25, 0.5, 9.17307, -20.75, 0.5, 15.9231, -21.5, 0.5, 16.6731, -18, 0.5, 17.6731, -20.75, 0.5, 15.1731, -20.75, 0.5, 15.9231, -18, 0.5, 17.6731, 23.25, -0.5, 9.17307, 23.25, -0.5, 10.9231, 30.75, -0.5, 10.9231, 30.75, -0.5, 9.17307, 23.25, 0.5, 13.1731, 23.25, 0.5, 13.9231, 30.75, 0.5, 13.9231, 30.75, 0.5, 13.1731)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(10, 9, 7), PackedInt32Array(7, 9, 8), PackedInt32Array(13, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(34, 36, 35), PackedInt32Array(40, 39, 37), PackedInt32Array(37, 39, 38), PackedInt32Array(43, 42, 41), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(48, 45, 44), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 49), PackedInt32Array(56, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(63, 62, 61), PackedInt32Array(66, 65, 64), PackedInt32Array(67, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(74, 73, 71), PackedInt32Array(71, 73, 72), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 75), PackedInt32Array(82, 81, 79), PackedInt32Array(79, 81, 80), PackedInt32Array(86, 85, 83), PackedInt32Array(83, 85, 84), PackedInt32Array(90, 89, 87), PackedInt32Array(87, 89, 88), PackedInt32Array(94, 93, 91), PackedInt32Array(91, 93, 92), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(98, 95, 100), PackedInt32Array(98, 100, 99), PackedInt32Array(102, 101, 103), PackedInt32Array(103, 101, 104), PackedInt32Array(107, 106, 105), PackedInt32Array(110, 109, 108), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(119, 118, 120), PackedInt32Array(120, 118, 121), PackedInt32Array(125, 126, 122), PackedInt32Array(122, 126, 123), PackedInt32Array(123, 126, 124), PackedInt32Array(128, 127, 129), PackedInt32Array(129, 127, 131), PackedInt32Array(129, 131, 130), PackedInt32Array(132, 134, 133), PackedInt32Array(138, 137, 135), PackedInt32Array(135, 137, 136), PackedInt32Array(141, 140, 139), PackedInt32Array(142, 144, 143), PackedInt32Array(147, 146, 145), PackedInt32Array(150, 149, 148), PackedInt32Array(153, 152, 151), PackedInt32Array(156, 155, 154), PackedInt32Array(158, 157, 159), PackedInt32Array(159, 157, 160), PackedInt32Array(160, 157, 161), PackedInt32Array(163, 162, 164), PackedInt32Array(164, 162, 165), PackedInt32Array(165, 162, 167), PackedInt32Array(165, 167, 166), PackedInt32Array(169, 168, 173), PackedInt32Array(173, 168, 172), PackedInt32Array(173, 172, 171), PackedInt32Array(173, 171, 170), PackedInt32Array(177, 176, 174), PackedInt32Array(174, 176, 175), PackedInt32Array(180, 179, 178), PackedInt32Array(183, 182, 181), PackedInt32Array(187, 186, 184), PackedInt32Array(184, 186, 185), PackedInt32Array(189, 188, 190), PackedInt32Array(190, 188, 191), PackedInt32Array(196, 195, 192), PackedInt32Array(192, 195, 194), PackedInt32Array(192, 194, 193), PackedInt32Array(197, 199, 198), PackedInt32Array(201, 200, 202), PackedInt32Array(202, 200, 203), PackedInt32Array(207, 206, 208), PackedInt32Array(208, 206, 209), PackedInt32Array(208, 209, 205), PackedInt32Array(208, 205, 204), PackedInt32Array(211, 214, 212), PackedInt32Array(212, 214, 215), PackedInt32Array(215, 214, 210), PackedInt32Array(215, 210, 213), PackedInt32Array(218, 217, 216), PackedInt32Array(222, 221, 219), PackedInt32Array(219, 221, 220), PackedInt32Array(224, 223, 225), PackedInt32Array(225, 223, 226), PackedInt32Array(228, 227, 229), PackedInt32Array(229, 227, 230), PackedInt32Array(230, 227, 231), PackedInt32Array(231, 227, 232), PackedInt32Array(234, 233, 235), PackedInt32Array(235, 233, 236), PackedInt32Array(236, 233, 237), PackedInt32Array(237, 233, 238), PackedInt32Array(243, 242, 239), PackedInt32Array(239, 242, 241), PackedInt32Array(239, 241, 240), PackedInt32Array(245, 244, 246), PackedInt32Array(246, 244, 247), PackedInt32Array(250, 249, 248), PackedInt32Array(254, 253, 251), PackedInt32Array(251, 253, 252), PackedInt32Array(257, 256, 255), PackedInt32Array(258, 261, 259), PackedInt32Array(259, 261, 260), PackedInt32Array(263, 262, 264), PackedInt32Array(264, 262, 265), PackedInt32Array(269, 268, 266), PackedInt32Array(266, 268, 267), PackedInt32Array(273, 272, 270), PackedInt32Array(270, 272, 271), PackedInt32Array(277, 276, 274), PackedInt32Array(274, 276, 275), PackedInt32Array(281, 280, 278), PackedInt32Array(278, 280, 279), PackedInt32Array(284, 283, 282), PackedInt32Array(288, 287, 285), PackedInt32Array(285, 287, 286), PackedInt32Array(292, 291, 289), PackedInt32Array(289, 291, 290), PackedInt32Array(293, 295, 294), PackedInt32Array(298, 297, 299), PackedInt32Array(299, 297, 296), PackedInt32Array(299, 296, 300), PackedInt32Array(301, 303, 302), PackedInt32Array(308, 307, 304), PackedInt32Array(304, 307, 305), PackedInt32Array(305, 307, 306), PackedInt32Array(313, 312, 309), PackedInt32Array(309, 312, 310), PackedInt32Array(310, 312, 311), PackedInt32Array(317, 316, 314), PackedInt32Array(314, 316, 315), PackedInt32Array(319, 318, 320), PackedInt32Array(320, 318, 321), PackedInt32Array(324, 323, 322), PackedInt32Array(327, 326, 325), PackedInt32Array(328, 331, 329), PackedInt32Array(329, 331, 330), PackedInt32Array(333, 332, 334), PackedInt32Array(334, 332, 335), PackedInt32Array(338, 337, 339), PackedInt32Array(339, 337, 336), PackedInt32Array(339, 336, 341), PackedInt32Array(339, 341, 340), PackedInt32Array(343, 342, 344), PackedInt32Array(344, 342, 345), PackedInt32Array(348, 347, 346), PackedInt32Array(351, 350, 349), PackedInt32Array(354, 353, 352), PackedInt32Array(358, 357, 355), PackedInt32Array(355, 357, 356), PackedInt32Array(362, 361, 359), PackedInt32Array(359, 361, 360), PackedInt32Array(364, 363, 365), PackedInt32Array(365, 363, 366), PackedInt32Array(368, 367, 369), PackedInt32Array(369, 367, 370), PackedInt32Array(370, 367, 371), PackedInt32Array(376, 375, 372), PackedInt32Array(372, 375, 373), PackedInt32Array(373, 375, 374), PackedInt32Array(379, 378, 377), PackedInt32Array(381, 380, 382), PackedInt32Array(382, 380, 383), PackedInt32Array(385, 384, 386), PackedInt32Array(386, 384, 389), PackedInt32Array(386, 389, 388), PackedInt32Array(386, 388, 387), PackedInt32Array(390, 392, 391), PackedInt32Array(395, 394, 393), PackedInt32Array(399, 398, 396), PackedInt32Array(396, 398, 397), PackedInt32Array(403, 402, 400), PackedInt32Array(400, 402, 401)]
+agent_radius = 1.0
+filter_ledge_spans = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucyy1"]
+
+[sub_resource type="Animation" id="Animation_7q2qf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("garage_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e6gge"]
+resource_name = "door_slide"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("garage_door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q14vq"]
+_data = {
+"RESET": SubResource("Animation_7q2qf"),
+"door_slide": SubResource("Animation_e6gge")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dw44j"]
+resource_local_to_scene = true
+size = Vector2(24, 17)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m5wk0"]
+points = PackedVector3Array(-12, 0, -8.5, -12, 0, 8.5, 12, 0, -8.5, 12, 0, 8.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a2b6p"]
+resource_local_to_scene = true
+size = Vector2(5, 5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iyb0q"]
+points = PackedVector3Array(-2.5, 0, -2.5, -2.5, 0, 2.5, 2.5, 0, -2.5, 2.5, 0, 2.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_llhmo"]
+resource_local_to_scene = true
+size = Vector2(10, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u5epy"]
+points = PackedVector3Array(-5, 0, -2, -5, 0, 2, 5, 0, -2, 5, 0, 2)
+
+[node name="MainLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d73c0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 0.1, 0)
+visible = false
+axis = 1
+texture = ExtResource("2_unjly")
+
+[node name="Player" parent="." instance=ExtResource("3_orkty")]
+transform = Transform3D(0.998443, 0, -0.0557867, 0, 1, 0, 0.0557867, 0, 0.998443, 4, 1, 14)
+speed = 6.0
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy2" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -15.8, 0.9, 17.2)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_7w7ou")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy2"]
+shape = SubResource("CapsuleShape3D_j1xgm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy2"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy2"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_qk7n7")
+}
+
+[node name="drone" parent="Enemies/Enemy2" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy2/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy2/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_6ufm3")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy2/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, 1.03708e-09, 0.0232907, 1.69984, -2.76953e-09, -9.99066e-10, 2.78347e-09, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.18585e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.01644e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy2/drone/Blue_Lights"]
+transform = Transform3D(1.7, 1.27055e-20, 0, -5.0822e-21, 1.7, -7.10543e-14, 0, 7.10543e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_cjsob")
+mesh = SubResource("SphereMesh_sjqk4")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy2"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy3" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4, 1, 7.2)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy3"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy3"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy3"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy3" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy3/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy3/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy3/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, 1.03708e-09, 0.0232907, 1.69984, -2.76953e-09, -9.99066e-10, 2.78347e-09, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.18585e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.01644e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy3/drone/Blue_Lights"]
+transform = Transform3D(1.7, 1.27055e-20, 0, -5.0822e-21, 1.7, -7.10543e-14, 0, 7.10543e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_pc4ga")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy3"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy4" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -28.4, 4, 14.2)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy4"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy4"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy4"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy4" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy4/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy4/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy4/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy4/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_mj5fl")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy4"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy5" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -14.4, 4, 6.2)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy5"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy5"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy5"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy5" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy5/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy5/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy5/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy5/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_y1byj")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy5"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy6" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -6.4, 4, -0.299999)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy6"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy6"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy6"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy6" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy6/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy6/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy6/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy6/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hyexh")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy6"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy7" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 10.9, 4, -14.9)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy7"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy7"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy7"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy7" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy7/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy7/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy7/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy7/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_qulex")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy7"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy8" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 10.9, 4, -3.7)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy8"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy8"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy8"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy8" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy8/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy8/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy8/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy8/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8mckc")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy8"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy9" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -11.2, 4, -3.7)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy9"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy9"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy9"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy9" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy9/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy9/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy9/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy9/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_8yax2")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy9"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy14" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -21.2, 4, -4.7)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy14"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy14"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy14"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy14" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy14/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy14/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy14/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -8.9407e-08, 0.0232907, 1.69984, -2.76953e-09, 8.9407e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1.7, -5.32907e-15, -8.9407e-08, 1.77636e-15, 1.7, -1.90958e-14, 8.9407e-08, 2.39808e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1.7, -5.32907e-15, -8.9407e-08, 1.77636e-15, 1.7, -1.90958e-14, 8.9407e-08, 2.39808e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy14/drone/Blue_Lights"]
+transform = Transform3D(1.7, -5.32907e-15, -8.9407e-08, 1.77636e-15, 1.7, -6.88338e-14, 8.9407e-08, 7.01661e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_2u5rq")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy14"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy15" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(-1.49012e-08, 0, -1, 0, 1, 0, 1, 0, -1.49012e-08, -0.200001, 4, -0.799998)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy15"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy15"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy15"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy15" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy15/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy15/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy15/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -8.9407e-08, 0.0232907, 1.69984, -2.76953e-09, 8.9407e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1, -8.88178e-16, -7.45058e-08, 8.88178e-16, 1, -4.59632e-14, 7.45058e-08, 4.24105e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1.7, -5.32907e-15, -8.9407e-08, 1.77636e-15, 1.7, -1.90958e-14, 8.9407e-08, 2.39808e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1.7, -5.32907e-15, -8.9407e-08, 1.77636e-15, 1.7, -1.90958e-14, 8.9407e-08, 2.39808e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy15/drone/Blue_Lights"]
+transform = Transform3D(1.7, -5.32907e-15, -8.9407e-08, 1.77636e-15, 1.7, -6.88338e-14, 8.9407e-08, 7.01661e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_dtjsr")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy15"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy10" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, -29.2, 1, -3.5)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy10"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy10"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy10"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy10" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy10/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy10/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy10/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy10/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_1my3a")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy10"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy11" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, 26.2, 4, -12.9)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy11"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy11"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy11"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy11" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy11/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy11/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy11/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76954e-09, 5.96046e-08, -9.31323e-10, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1, -1.77636e-15, -5.96046e-08, 0, 1, -4.26326e-14, 5.96046e-08, 4.44089e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -2.4869e-14, 5.96046e-08, 2.4869e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy11/drone/Blue_Lights"]
+transform = Transform3D(1.7, -3.55271e-15, -5.96046e-08, 0, 1.7, -7.4607e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_ttm1l")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy11"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy12" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(-0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.573576, 26.2, 4, -3.9)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy12"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy12"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy12"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy12" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy12/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy12/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy12/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76953e-09, 5.96046e-08, -1.86265e-09, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1.7, 0, -5.96046e-08, 0, 1.7, -2.13163e-14, 5.96046e-08, 2.30926e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1.7, 0, -5.96046e-08, 0, 1.7, -2.13163e-14, 5.96046e-08, 2.30926e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy12/drone/Blue_Lights"]
+transform = Transform3D(1.7, 3.55271e-15, -5.96046e-08, 0, 1.7, -7.10543e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_a1fxd")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy12"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy13" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(-0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, -0.996195, 26.7, 1, 6.9)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_4f76g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy13"]
+shape = SubResource("CapsuleShape3D_xk3jq")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy13"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy13"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_h6oa2")
+}
+
+[node name="drone" parent="Enemies/Enemy13" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy13/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy13/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_ibmff")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy13/drone"]
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1.69984, -0.0232907, -5.96046e-08, 0.0232907, 1.69984, -2.76953e-09, 5.96046e-08, -1.86265e-09, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1, 0, -8.9407e-08, 1.77636e-15, 1, -3.9968e-14, 8.9407e-08, 4.61853e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1.7, 0, -5.96046e-08, 0, 1.7, -2.13163e-14, 5.96046e-08, 2.30926e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1.7, 0, -5.96046e-08, 0, 1.7, -2.13163e-14, 5.96046e-08, 2.30926e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy13/drone/Blue_Lights"]
+transform = Transform3D(1.7, 3.55271e-15, -5.96046e-08, 0, 1.7, -7.10543e-14, 5.96046e-08, 7.4607e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_4efcy")
+mesh = SubResource("SphereMesh_8klna")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy13"]
+stream = ExtResource("4_tru6u")
+
+[node name="Enemy" type="CharacterBody3D" parent="Enemies"]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -15, 1, 11)
+script = ExtResource("3_rrejh")
+material = SubResource("StandardMaterial3D_6qge4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy"]
+shape = SubResource("CapsuleShape3D_fwu1r")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemies/Enemy"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemies/Enemy"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_ioa8x")
+}
+
+[node name="drone" parent="Enemies/Enemy" instance=ExtResource("4_yocwf")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="Enemies/Enemy/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="Enemies/Enemy/drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_1dus0")
+
+[node name="Blue_Lights" type="Node3D" parent="Enemies/Enemy/drone"]
+unique_name_in_owner = true
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.69984, -0.0232907, 1.03708e-09, 0.0232907, 1.69984, -2.76953e-09, -9.99066e-10, 2.78347e-09, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.18585e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.01644e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="Enemies/Enemy/drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.7, 1.27055e-20, 0, -5.0822e-21, 1.7, -7.10543e-14, 0, 7.10543e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_hschs")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy"]
+
+[node name="DroneAttackStreamPlayer3D" type="AudioStreamPlayer3D" parent="Enemies/Enemy"]
+stream = ExtResource("6_36jyn")
+volume_db = -35.0
+unit_size = 5.0
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="BulletPickup" parent="Pickups" instance=ExtResource("5_btlav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 10)
+ammount = 2
+
+[node name="BulletPickup2" parent="Pickups" instance=ExtResource("5_btlav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 4, -6)
+ammount = 2
+
+[node name="BulletPickup3" parent="Pickups" instance=ExtResource("5_btlav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -2)
+ammount = 2
+
+[node name="SmallBulletPickup" parent="Pickups" instance=ExtResource("6_e6bt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1, 17)
+ammount = 10
+
+[node name="SmallBulletPickup2" parent="Pickups" instance=ExtResource("6_e6bt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4, 2)
+ammount = 10
+
+[node name="SmallBulletPickup3" parent="Pickups" instance=ExtResource("6_e6bt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -17)
+ammount = 10
+
+[node name="SmallBulletPickup4" parent="Pickups" instance=ExtResource("6_e6bt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 4, -15)
+ammount = 10
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_wwjhi")
+
+[node name="LevelContents" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Overhang" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1.5, 11)
+material_override = ExtResource("1_aahs1")
+use_collision = true
+size = Vector3(22, 3, 16)
+
+[node name="Overhang2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+material_override = ExtResource("1_aahs1")
+operation = 2
+size = Vector3(22, 3, 16)
+
+[node name="Corridor6" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, -0.25, -7)
+material_override = ExtResource("1_aahs1")
+operation = 2
+size = Vector3(10, 2.5, 4)
+
+[node name="Overhang2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 1.5, -5)
+material_override = ExtResource("1_aahs1")
+use_collision = true
+size = Vector3(14, 3, 10)
+
+[node name="Overhang3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0, 0)
+material_override = ExtResource("1_aahs1")
+operation = 2
+size = Vector3(8, 3, 10)
+
+[node name="Overhang3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -9)
+material_override = ExtResource("1_aahs1")
+use_collision = true
+size = Vector3(26, 3, 20)
+
+[node name="Overhang4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = ExtResource("1_aahs1")
+operation = 2
+flip_faces = true
+size = Vector3(18, 3, 12)
+
+[node name="Overhang4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1.5, -1)
+material_override = ExtResource("1_aahs1")
+use_collision = true
+size = Vector3(10, 3, 32)
+
+[node name="Overhang5" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+material_override = ExtResource("1_aahs1")
+operation = 2
+size = Vector3(10, 3, 16)
+
+[node name="Room" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 13)
+material_override = ExtResource("1_aahs1")
+use_collision = true
+flip_faces = true
+size = Vector3(12, 3, 12)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/LevelContents/Room"]
+
+[node name="Room2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 1.5, -2)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(22, 6, 16)
+
+[node name="Corridor" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.25, 0)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(10, 2.5, 4)
+
+[node name="Corridor2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29, -0.25, -11)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(10, 2.5, 4)
+
+[node name="Corridor3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2.75, -17)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(10, 2.5, 4)
+
+[node name="Corridor4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 2.75, -10)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(10, 2.5, 4)
+
+[node name="Corridor5" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.75, -23)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(10, 2.5, 4)
+
+[node name="Room3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 1.5, -18)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(14, 6, 10)
+
+[node name="LavaPit" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6558, -2, -17.1828)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(4.50223, 1, 3.67836)
+
+[node name="LavaPit2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0134, -2, -3.0382)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(9.98717, 1, 4)
+
+[node name="Room4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, -22)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(26, 6, 20)
+
+[node name="Room5" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 1.5, -14)
+material_override = ExtResource("1_aahs1")
+flip_faces = true
+size = Vector3(10, 6, 32)
+
+[node name="Slope" type="CSGPolygon3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21, 0, 11.5)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 6, 3, 6, 0)
+depth = 4.0
+material = ExtResource("1_aahs1")
+
+[node name="Slope2" type="CSGPolygon3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -29.7, 0, -6)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 6, 3, 6, 0)
+depth = 4.0
+material = ExtResource("1_aahs1")
+
+[node name="Slope3" type="CSGPolygon3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 32, 0, 6)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 7, 3, 7, 0)
+depth = 10.0
+material = ExtResource("1_aahs1")
+
+[node name="GarageDoor" type="Area3D" parent="NavigationRegion3D/LevelContents"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.3, 1, 13)
+
+[node name="garage_door" parent="NavigationRegion3D/LevelContents/GarageDoor" instance=ExtResource("16_som37")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/LevelContents/GarageDoor"]
+shape = SubResource("BoxShape3D_ucyy1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NavigationRegion3D/LevelContents/GarageDoor"]
+libraries = {
+"": SubResource("AnimationLibrary_q14vq")
+}
+
+[node name="CornerDecorations" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="clone_large_box" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("8_xs2do")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -10.0911, 0, 8.6294)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+light_energy = 1.5
+omni_range = 6.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box"]
+stream = ExtResource("11_4owtd")
+volume_db = -12.0
+unit_size = 0.1
+autoplay = true
+
+[node name="clone_large_box4" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("8_xs2do")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 9.36216, 0, 8)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box4"]
+transform = Transform3D(0.833333, 0, -3.55271e-15, 0, 0.833333, 0, 3.55271e-15, 0, 0.833333, 0, 0.5, 0)
+light_energy = 1.5
+omni_range = 6.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box4"]
+stream = ExtResource("11_4owtd")
+volume_db = -12.0
+unit_size = 0.1
+autoplay = true
+
+[node name="clone_large_box3" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("8_xs2do")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -19.1653, 3, -0.622242)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+light_energy = 1.5
+omni_range = 6.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box3"]
+stream = ExtResource("11_4owtd")
+volume_db = -12.0
+unit_size = 0.1
+autoplay = true
+
+[node name="clone_large_box2" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("8_xs2do")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -29.9281, 3, 3.6385)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+light_energy = 1.5
+omni_range = 6.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NavigationRegion3D/CornerDecorations/clone_large_box2"]
+stream = ExtResource("11_4owtd")
+volume_db = -12.0
+unit_size = 0.1
+autoplay = true
+
+[node name="cloning_vat_fridge" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("11_ea1ln")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, -1.2, 0, 18.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/CornerDecorations/cloning_vat_fridge"]
+transform = Transform3D(3.33333, 0, -2.84217e-14, 0, 3.33333, 0, 2.84217e-14, 0, 3.33333, 0, 4.5, 0)
+light_energy = 2.0
+omni_range = 6.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NavigationRegion3D/CornerDecorations/cloning_vat_fridge"]
+stream = ExtResource("11_4owtd")
+volume_db = -12.0
+unit_size = 0.1
+autoplay = true
+
+[node name="cloning_vat_fridge2" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("11_ea1ln")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -18.7324, 3, -9.24676)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/CornerDecorations/cloning_vat_fridge2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+light_energy = 2.0
+omni_range = 6.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NavigationRegion3D/CornerDecorations/cloning_vat_fridge2"]
+stream = ExtResource("11_4owtd")
+volume_db = -12.0
+unit_size = 0.1
+autoplay = true
+
+[node name="locker" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 2.98023e-08, 18.8)
+
+[node name="locker2" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.4, 2.98023e-08, 18.8)
+
+[node name="locker3" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.8, 2.98023e-08, 18.8)
+
+[node name="locker4" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.2, 2.98023e-08, 18.8)
+
+[node name="locker5" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.98023e-08, 7.3)
+
+[node name="locker6" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.4, 2.98023e-08, 7.3)
+
+[node name="locker7" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.8, 2.98023e-08, 7.3)
+
+[node name="locker8" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.2, 2.98023e-08, 7.3)
+
+[node name="locker9" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 3, 3.2)
+
+[node name="locker10" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.6, 3, 3.2)
+
+[node name="locker11" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.2, 3, 3.2)
+
+[node name="locker12" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("10_5fgxc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.8, 3, 3.2)
+
+[node name="modular_pipes" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("11_ft6ap")]
+transform = Transform3D(-0.003, 0, -2.62268e-10, 0, 0.003, 0, 2.62268e-10, 0, -0.003, 12.4, 3.7, -1.49012e-08)
+
+[node name="modular_pipes2" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("11_ft6ap")]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, -11.1, 3.7, -18)
+
+[node name="modular_pipes3" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("11_ft6ap")]
+transform = Transform3D(-1.31134e-10, 0, -0.003, 0, 0.003, 0, 0.003, 0, -1.31134e-10, -24.1, 0.7, -5)
+
+[node name="workbench (1)" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("12_khlhv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4, 0, 7.5)
+
+[node name="workbench (1)2" parent="NavigationRegion3D/CornerDecorations" instance=ExtResource("12_khlhv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 24, 3, -16.5)
+
+[node name="LavaPools" type="Node3D" parent="."]
+
+[node name="Lava" parent="LavaPools" instance=ExtResource("8_n40nv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -9)
+
+[node name="MeshInstance3D" parent="LavaPools/Lava" index="0"]
+mesh = SubResource("PlaneMesh_dw44j")
+
+[node name="OmniLight3D" parent="LavaPools/Lava" index="1"]
+omni_range = 25.0
+
+[node name="LavaStreamPlayer3D" parent="LavaPools/Lava" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+max_db = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaPools/Lava"]
+shape = SubResource("ConvexPolygonShape3D_m5wk0")
+
+[node name="Lava2" parent="LavaPools" instance=ExtResource("8_n40nv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7092, -0.714624, -4.22706)
+
+[node name="MeshInstance3D" parent="LavaPools/Lava2" index="0"]
+mesh = SubResource("PlaneMesh_a2b6p")
+
+[node name="OmniLight3D" parent="LavaPools/Lava2" index="1"]
+omni_range = 15.0
+
+[node name="LavaStreamPlayer3D" parent="LavaPools/Lava2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+volume_db = -12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaPools/Lava2"]
+shape = SubResource("ConvexPolygonShape3D_iyb0q")
+
+[node name="Lava3" parent="LavaPools" instance=ExtResource("8_n40nv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.9806, -0.628429, 9.63782)
+
+[node name="MeshInstance3D" parent="LavaPools/Lava3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520592, 0, 0.338399)
+mesh = SubResource("PlaneMesh_llhmo")
+
+[node name="OmniLight3D" parent="LavaPools/Lava3" index="1"]
+omni_range = 15.0
+
+[node name="LavaStreamPlayer3D" parent="LavaPools/Lava3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+volume_db = -12.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaPools/Lava3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520592, 0, 0.338399)
+shape = SubResource("ConvexPolygonShape3D_u5epy")
+
+[node name="Decoration" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00750351, -0.0436935, 0.0285015)
+
+[node name="retro_computer" parent="Decoration" instance=ExtResource("15_ubkvt")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 3.8, 1.12384, 7.62332)
+
+[node name="retro_computer2" parent="Decoration" instance=ExtResource("15_ubkvt")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 23.9, 4.12384, -16.3767)
+
+[node name="industrial_sci-fi_gritty_wall_lamp" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(-0.004, 0, -3.49691e-10, 0, 0.004, 0, 3.49691e-10, 0, -0.004, 4.9, 1.8, 7.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="industrial_sci-fi_gritty_wall_lamp2" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(-0.004, 0, -3.49691e-10, 0, 0.004, 0, 3.49691e-10, 0, -0.004, -1.1, 1.8, 7.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp2"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="industrial_sci-fi_gritty_wall_lamp3" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(-1.74846e-10, 0, -0.004, 0, 0.004, 0, 0.004, 0, -1.74846e-10, -1.8, 1.8, 16.4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp3"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="industrial_sci-fi_gritty_wall_lamp5" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(-1.74846e-10, 0, -0.004, 0, 0.004, 0, 0.004, 0, -1.74846e-10, -26.8, 1.8, 17.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp5"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="industrial_sci-fi_gritty_wall_lamp6" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(-1.74846e-10, 0, -0.004, 0, 0.004, 0, 0.004, 0, -1.74846e-10, -26.8, 1.8, 9.5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp6"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 4.0
+omni_range = 7.0
+
+[node name="industrial_sci-fi_gritty_wall_lamp7" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(-0.004, 0, -3.49691e-10, 0, 0.004, 0, 3.49691e-10, 0, -0.004, -21.4, 1.8, 8.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp7"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="industrial_sci-fi_gritty_wall_lamp8" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(-0.004, 0, -3.49691e-10, 0, 0.004, 0, 3.49691e-10, 0, -0.004, -15.7, 4.8, 3.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp8"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="industrial_sci-fi_gritty_wall_lamp4" parent="Decoration" instance=ExtResource("16_be1im")]
+transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 8.5, 1.8, 18.8)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/industrial_sci-fi_gritty_wall_lamp4"]
+transform = Transform3D(250, 0, 1.81899e-12, 0, 250, 0, -1.81899e-12, 0, 250, 0, 25, 0)
+light_color = Color(0.827451, 0.556863, 0, 1)
+light_energy = 3.0
+omni_range = 4.0
+
+[node name="overhead_lamp" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 2.8, 13)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 6.0
+omni_range = 7.0
+
+[node name="overhead_lamp2" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2, 5.8, 13)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="overhead_lamp3" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6, 5.8, 12.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="overhead_lamp4" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 5.8, 5.6)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="overhead_lamp5" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 5.8, -5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="overhead_lamp6" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9, 5.8, -4.4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="overhead_lamp7" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 5.8, -17.3)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="overhead_lamp8" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8, 5.8, -10.1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="overhead_lamp9" parent="Decoration" instance=ExtResource("17_tna3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8, 5.8, 5.2)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/overhead_lamp9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0999999, 0)
+light_energy = 5.0
+omni_range = 6.0
+
+[node name="ControlPanel" parent="Decoration" instance=ExtResource("21_bmcag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.6, 10.4)
+
+[connection signal="animation_finished" from="Enemies/Enemy2/AnimationPlayer" to="Enemies/Enemy2" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy3/AnimationPlayer" to="Enemies/Enemy3" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy4/AnimationPlayer" to="Enemies/Enemy4" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy5/AnimationPlayer" to="Enemies/Enemy5" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy6/AnimationPlayer" to="Enemies/Enemy6" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy7/AnimationPlayer" to="Enemies/Enemy7" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy8/AnimationPlayer" to="Enemies/Enemy8" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy9/AnimationPlayer" to="Enemies/Enemy9" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy14/AnimationPlayer" to="Enemies/Enemy14" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy15/AnimationPlayer" to="Enemies/Enemy15" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy10/AnimationPlayer" to="Enemies/Enemy10" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy11/AnimationPlayer" to="Enemies/Enemy11" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy12/AnimationPlayer" to="Enemies/Enemy12" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy13/AnimationPlayer" to="Enemies/Enemy13" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="animation_finished" from="Enemies/Enemy/AnimationPlayer" to="Enemies/Enemy" method="_on_animation_player_animation_finished" flags=18]
+[connection signal="body_entered" from="Decoration/ControlPanel" to="Decoration/ControlPanel" method="_on_body_entered"]
+
+[editable path="Enemies/Enemy2/drone"]
+[editable path="Enemies/Enemy3/drone"]
+[editable path="Enemies/Enemy4/drone"]
+[editable path="Enemies/Enemy5/drone"]
+[editable path="Enemies/Enemy6/drone"]
+[editable path="Enemies/Enemy7/drone"]
+[editable path="Enemies/Enemy8/drone"]
+[editable path="Enemies/Enemy9/drone"]
+[editable path="Enemies/Enemy14/drone"]
+[editable path="Enemies/Enemy15/drone"]
+[editable path="Enemies/Enemy10/drone"]
+[editable path="Enemies/Enemy11/drone"]
+[editable path="Enemies/Enemy12/drone"]
+[editable path="Enemies/Enemy13/drone"]
+[editable path="Enemies/Enemy/drone"]
+[editable path="LavaPools/Lava"]
+[editable path="LavaPools/Lava2"]
+[editable path="LavaPools/Lava3"]

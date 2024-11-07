@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4a882kfrptvi"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_u1ds0"]
+[ext_resource type="Script" path="res://Player/SmoothCamera.gd" id="2_3auwn"]
+[ext_resource type="Script" path="res://Player/Crosshair.gd" id="3_5iwvg"]
+[ext_resource type="PackedScene" uid="uid://dxkppssqk2adt" path="res://Weapons/msbs.tscn" id="3_6e6eg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rgaxr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xekdt"]
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(0.998443, 0, -0.0557867, 0, 1, 0, 0.0557867, 0, 0.998443, 0, 0, 0)
+script = ExtResource("1_u1ds0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_rgaxr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xekdt")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="SmoothCamera" type="Camera3D" parent="CameraPivot"]
+top_level = true
+script = ExtResource("2_3auwn")
+
+[node name="MSBS" parent="CameraPivot/SmoothCamera" instance=ExtResource("3_6e6eg")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="Control" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("3_5iwvg")

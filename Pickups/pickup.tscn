@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbaei25rdtpl1"]
+
+[ext_resource type="Script" path="res://Pickups/pickup.gd" id="1_e2dx8"]
+[ext_resource type="Shader" uid="uid://hf4pbphgt4o7" path="res://Pickups/FresnelAura.tres" id="2_t1oop"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ycfmw"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0v5gu"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_qk5q2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rexi4"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AmmoMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.785398, 0, 0.785398), Vector3(0.785398, 6.28319, 0.785398)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aa15m"]
+_data = {
+"RESET": SubResource("Animation_qk5q2"),
+"idle": SubResource("Animation_rexi4")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nf832"]
+render_priority = 0
+shader = ExtResource("2_t1oop")
+
+[sub_resource type="SphereMesh" id="SphereMesh_swe5o"]
+
+[node name="Pickup" type="Area3D"]
+script = ExtResource("1_e2dx8")
+
+[node name="AmmoMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.5, 0.5, -0.707107, 0.5, 0.5, 0.707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_ycfmw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0v5gu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_aa15m")
+}
+
+[node name="FresnelAura" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_nf832")
+mesh = SubResource("SphereMesh_swe5o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

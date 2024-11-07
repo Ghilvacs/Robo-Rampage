@@ -1,0 +1,101 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://bkbh3cv7yevas"
+path="res://.godot/imported/modular_pipes.glb-55b5275654d030605b9f3b1b9f0984a3.scn"
+
+[deps]
+
+source_file="res://Assets/Deco/modular_pipes.glb"
+dest_files=["res://.godot/imported/modular_pipes.glb-55b5275654d030605b9f3b1b9f0984a3.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeCurved/pipeCurved_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeCurved_1/pipeCurved_1_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeCurved_2/pipeCurved_2_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeStraight/pipeStraight_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeStraight_1/pipeStraight_1_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeStraight_2/pipeStraight_2_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeU/pipeU_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipeU_1/pipeU_1_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipebent1/pipebent1_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipebent1_1/pipebent1_1_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipebent1_2/pipebent1_2_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipebent2/pipebent2_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/pipebent2_1/pipebent2_1_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segment/segment_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segmentT/handlebase_2/handle_2/handle_2_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segmentT/segmentT_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segmentT_1/segmentT_1_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segmentT_2/segmentT_2_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segmentT_3/handlebase/handle/handle_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segmentT_3/handlebase/handlebase_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segmentT_3/segmentT_3_pipes_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/1291caa213094d828d23dd2d175fa3a1_fbx/RootNode/segment_7/segment_7_pipes_0": {
+"generate/physics": true
+}
+}
+}
+gltf/embedded_image_handling=1

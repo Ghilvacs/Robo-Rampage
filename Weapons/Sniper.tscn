@@ -1,0 +1,233 @@
+[gd_scene load_steps=8 format=3 uid="uid://bc1ieb7gf2edk"]
+
+[ext_resource type="PackedScene" uid="uid://8eadi1e8lf51" path="res://Weapons/hitscan_weapon.tscn" id="1_p3l1a"]
+[ext_resource type="PackedScene" uid="uid://b0n2nk4vd3whd" path="res://Weapons/snipex__aligator.glb" id="2_8xnoy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1sdg"]
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="Curve" id="Curve_fnnsa"]
+_data = [Vector2(0.0454545, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yh7cq"]
+curve = SubResource("Curve_fnnsa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8inun"]
+direction = Vector3(0, 0, -1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_curve = SubResource("CurveTexture_yh7cq")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ubqu"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="Sniper" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_p3l1a")]
+fire_rate = 8.0
+recoil = 0.3
+weapon_mesh = NodePath("snipex__aligator")
+weapon_damage = 70.0
+muzzle_flash = NodePath("MuzzleFlash")
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, -0.15, -1.55)
+layers = 2
+material_override = SubResource("StandardMaterial3D_t1sdg")
+cast_shadow = 0
+emitting = false
+lifetime = 0.07
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_8inun")
+draw_pass_1 = SubResource("BoxMesh_2ubqu")
+
+[node name="snipex__aligator" parent="." index="3" instance=ExtResource("2_8xnoy")]
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 0.13, -0.15, -0.8)
+
+[node name="Object_4" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9" index="0"]
+layers = 2
+
+[node name="Object_5" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9" index="1"]
+layers = 2
+
+[node name="Object_7" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/bipods_4" index="0"]
+layers = 2
+
+[node name="Object_8" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/bipods_4" index="1"]
+layers = 2
+
+[node name="Object_10" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/bipods_4/Circle_1" index="0"]
+layers = 2
+
+[node name="Object_12" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/bipods_4/Circle_002_2" index="0"]
+layers = 2
+
+[node name="Object_14" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/bipods_4/Plane_3" index="0"]
+layers = 2
+
+[node name="Object_16" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/Handle_5" index="0"]
+layers = 2
+
+[node name="Object_17" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/Handle_5" index="1"]
+layers = 2
+
+[node name="Object_19" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/Handle_001_6" index="0"]
+layers = 2
+
+[node name="Object_21" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/Supressor_7" index="0"]
+layers = 2
+
+[node name="Object_23" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Barrel_9/Bolt_001_8" index="0"]
+layers = 2
+
+[node name="Object_25" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/ForwardMagazine_11" index="0"]
+layers = 2
+
+[node name="Object_27" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/ForwardMagazine_11/Switch_10" index="0"]
+layers = 2
+
+[node name="Object_28" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/ForwardMagazine_11/Switch_10" index="1"]
+layers = 2
+
+[node name="Object_30" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22" index="0"]
+layers = 2
+
+[node name="Object_31" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22" index="1"]
+layers = 2
+
+[node name="Object_32" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22" index="2"]
+layers = 2
+
+[node name="Object_33" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22" index="3"]
+layers = 2
+
+[node name="Object_35" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/AmmoEjection_12" index="0"]
+layers = 2
+
+[node name="Object_37" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20" index="0"]
+layers = 2
+
+[node name="Object_38" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20" index="1"]
+layers = 2
+
+[node name="Object_40" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/BackUp_13" index="0"]
+layers = 2
+
+[node name="Object_41" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/BackUp_13" index="1"]
+layers = 2
+
+[node name="Object_42" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/BackUp_13" index="2"]
+layers = 2
+
+[node name="Object_44" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/ByPodsBack_18" index="0"]
+layers = 2
+
+[node name="Object_45" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/ByPodsBack_18" index="1"]
+layers = 2
+
+[node name="Object_47" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/ByPodsBack_18/BypodsBackConnect_14" index="0"]
+layers = 2
+
+[node name="Object_48" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/ByPodsBack_18/BypodsBackConnect_14" index="1"]
+layers = 2
+
+[node name="Object_50" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/ByPodsBack_18/BypodsBackPlane_15" index="0"]
+layers = 2
+
+[node name="Object_52" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/ByPodsBack_18/ByPodsBackTpChamber_16" index="0"]
+layers = 2
+
+[node name="Object_54" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/ByPodsBack_18/UnknownThingOnBypods_17" index="0"]
+layers = 2
+
+[node name="Object_56" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/Butt_20/SmallThign_19" index="0"]
+layers = 2
+
+[node name="Object_58" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Chamber_22/SmallThings_21" index="0"]
+layers = 2
+
+[node name="Object_60" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Trigger_23" index="0"]
+layers = 2
+
+[node name="Object_62" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32" index="0"]
+layers = 2
+
+[node name="Object_63" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32" index="1"]
+layers = 2
+
+[node name="Object_64" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32" index="2"]
+layers = 2
+
+[node name="Object_66" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/BoltUp_24" index="0"]
+layers = 2
+
+[node name="Object_68" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/BoltUp2_25" index="0"]
+layers = 2
+
+[node name="Object_70" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/BoltUp3_26" index="0"]
+layers = 2
+
+[node name="Object_72" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/BoltUp4_27" index="0"]
+layers = 2
+
+[node name="Object_74" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/SetRight_28" index="0"]
+layers = 2
+
+[node name="Object_75" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/SetRight_28" index="1"]
+layers = 2
+
+[node name="Object_76" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/SetRight_28" index="2"]
+layers = 2
+
+[node name="Object_77" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/SetRight_28" index="3"]
+layers = 2
+
+[node name="Object_79" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/SetUp_29" index="0"]
+layers = 2
+
+[node name="Object_80" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/SetUp_29" index="1"]
+layers = 2
+
+[node name="Object_81" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/SetUp_29" index="2"]
+layers = 2
+
+[node name="Object_83" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/Bolt_30" index="0"]
+layers = 2
+
+[node name="Object_85" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Scope_32/Bolt_002_31" index="0"]
+layers = 2
+
+[node name="Object_87" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Ammo_34" index="0"]
+layers = 2
+
+[node name="Object_88" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Ammo_34" index="1"]
+layers = 2
+
+[node name="Object_90" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Ammo_34/Bullet_33" index="0"]
+layers = 2
+
+[node name="Object_91" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Ammo_34/Bullet_33" index="1"]
+layers = 2
+
+[node name="Object_93" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Loader_35" index="0"]
+layers = 2
+
+[node name="Object_94" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Loader_35" index="1"]
+layers = 2
+
+[node name="Object_95" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/Loader_35" index="2"]
+layers = 2
+
+[node name="Object_97" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/MagazineTube_36" index="0"]
+layers = 2
+
+[node name="Object_99" parent="snipex__aligator/Sketchfab_model/root/GLTF_SceneRootNode/UpPart_37" index="0"]
+layers = 2
+
+[editable path="snipex__aligator"]

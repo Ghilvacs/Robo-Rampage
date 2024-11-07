@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://8eey8grmipxv"]
+
+[ext_resource type="PackedScene" uid="uid://dbaei25rdtpl1" path="res://Pickups/pickup.tscn" id="1_stbmu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gta4b"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="BulletPickup" instance=ExtResource("1_stbmu")]
+ammount = 10
+
+[node name="AmmoMesh" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_gta4b")

@@ -1,0 +1,494 @@
+[gd_scene load_steps=15 format=3 uid="uid://clilh13jjtcc8"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_l1bla"]
+[ext_resource type="PackedScene" uid="uid://swirrr08833m" path="res://Enemy/drone.glb" id="2_hl2jr"]
+[ext_resource type="Material" uid="uid://cy46irucrt2n6" path="res://Enemy/visor_material.tres" id="3_mhtvx"]
+[ext_resource type="AudioStream" uid="uid://d45ggu422dqy" path="res://Audio/Robot-Movement-Sound-Effects.ogg" id="3_rtxhr"]
+[ext_resource type="AudioStream" uid="uid://bfa33f342eq23" path="res://Audio/Pew-Sound-Effect.ogg" id="4_5aost"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fwu1r"]
+
+[sub_resource type="Animation" id="Animation_h1ln7"]
+resource_name = "Aggro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, -2.2, 7.881)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917), Vector3(0, 0, 7.917), Vector3(0.8, 1, 7.917)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(0.8, -1, 7.882)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881), Vector3(0, 0, 7.881), Vector3(2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, 1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882), Vector3(0, 0, 7.882), Vector3(-0.8, -1, 7.882)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DroneAggroStreamPlayer3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_rtxhr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
+
+[sub_resource type="Animation" id="Animation_b3xg1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drone/Blue_Lights/Blue_Light:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, -2.2, 7.881)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drone/Blue_Lights/Blue_Light2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, -2.2, 7.881)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drone/Blue_Lights/Small_Blue_Light4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, 1, 7.917)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drone/Blue_Lights/Blue_Light3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2, 2.2, 7.881)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("drone/Blue_Lights/Small_Blue_Light3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8, -1, 7.882)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drone/Blue_Lights/Blue_Light4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2, 2.2, 7.881)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("drone/Blue_Lights/Small_Blue_Light2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, 1, 7.882)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("drone/Blue_Lights/Small_Blue_Light:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8, -1, 7.882)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:albedo_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("drone/Blue_Lights/Blue_Light:material_override:emission")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.478431, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DroneAttackStreamPlayer3D:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pm8xb"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.3, 0.5), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("drone:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(0.65, 0.65, 0.65), Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DroneAttackStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4wyb6"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("drone:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.4, 0), Vector3(0, 0.3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ioa8x"]
+_data = {
+"Aggro": SubResource("Animation_h1ln7"),
+"RESET": SubResource("Animation_b3xg1"),
+"attack": SubResource("Animation_pm8xb"),
+"idle": SubResource("Animation_4wyb6")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dus0"]
+albedo_color = Color(1, 0.211765, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.71
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53gng"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0.478431, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.478431, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_bcavn"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_l1bla")
+material = ExtResource("3_mhtvx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_fwu1r")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_ioa8x")
+}
+
+[node name="drone" parent="." instance=ExtResource("2_hl2jr")]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.4, 0)
+
+[node name="Red_Lights" parent="drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode" index="12"]
+visible = false
+
+[node name="Red_Lights_Material_002_0" parent="drone/Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights" index="0"]
+visible = false
+material_override = SubResource("StandardMaterial3D_1dus0")
+
+[node name="Blue_Lights" type="Node3D" parent="drone"]
+unique_name_in_owner = true
+transform = Transform3D(5.34162e-09, 3.09266e-09, 0.070752, 1.57102e-17, 0.070752, -3.09266e-09, -0.070752, 2.492e-16, 5.34162e-09, -0.099011, 0.0150942, -0.00323414)
+
+[node name="Blue_Light" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.69984, -0.0232907, 1.03708e-09, 0.0232907, 1.69984, -2.76953e-09, -9.99066e-10, 2.78347e-09, 1.7, -2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light4" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, 1, 7.917)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light3" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, 0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light2" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, 1, 7.882)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Small_Blue_Light" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.27055e-21, 1.42109e-14, -1.27055e-21, 1, -4.26326e-14, -1.42109e-14, 4.26326e-14, 1, -0.8, -1, 7.882)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light4" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.18585e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, 2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light3" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.7, 7.6233e-21, 0, -1.01644e-20, 1.7, -2.13163e-14, 0, 2.13163e-14, 1.7, -2.2, 2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="Blue_Light2" type="MeshInstance3D" parent="drone/Blue_Lights"]
+unique_name_in_owner = true
+transform = Transform3D(1.7, 1.27055e-20, 0, -5.0822e-21, 1.7, -7.10543e-14, 0, 7.10543e-14, 1.7, 2.2, -2.2, 7.881)
+material_override = SubResource("StandardMaterial3D_53gng")
+mesh = SubResource("SphereMesh_bcavn")
+skeleton = NodePath("../../Sketchfab_model/9b192b255e3f4e9d8d4986526934635a_fbx/RootNode/Red_Lights")
+
+[node name="DroneAggroStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="DroneAttackStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_5aost")
+volume_db = -10.0
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="drone"]
